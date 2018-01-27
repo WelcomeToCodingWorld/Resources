@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+<p class="para">
+		Constants and variables associate a name (such as <code class="code-voice">maximumNumberOfLoginAttempts</code> or <code class="code-voice">welcomeMessage</code>) with a value of a particular type (such as the number <code class="code-voice">10</code> or the string <code class="code-voice">"Hello"</code>). The value of a <em>constant</em> cannot be changed once it is set, whereas a <em>variable</em> can be set to a different value in the future.
+	</p>
+	<a name="//apple_ref/doc/uid/TP40014097-CH5-ID311"></a>
+	<h3 class="section-name" tabindex="0">Declaring Constants and Variables（声明常量和变量）</h3>
+	<p class="para">
+		Constants and variables must be declared before they are used. You declare constants with the <code class="code-voice">let</code> keyword and variables with the <code class="code-voice">var</code> keyword. Here’s an example of how constants and variables can be used to track the number of login attempts a user has made:
+	</p>
+	<section class="code-listing">
+	<div class="code-sample">
+	<div class="Swift">
+					<ol class="code-lines">
+	<li><code class="code-voice"><span class="kt">let</span> <span class="vc">maximumNumberOfLoginAttempts</span> = <span class="m">10</span></code></li>
+	<li><code class="code-voice"><span class="kt">var</span> <span class="vc">currentLoginAttempt</span> = <span class="m">0</span></code></li>
+	</ol>
+				</div>
+	</div>
+	</section>
+	<p class="para">
+		This code can be read as:
+	</p>
+	<p class="para">
+		“Declare a new constant called <code class="code-voice">maximumNumberOfLoginAttempts</code>, and give it a value of <code class="code-voice">10</code>. Then, declare a new variable called <code class="code-voice">currentLoginAttempt</code>, and give it an initial value of <code class="code-voice">0</code>.” <br></p>
+	<p class="para">You can declare multiple constants or multiple variables on a single line, separated by commas:
+	</p>
+	<section class="code-listing">
+	<div class="code-sample">
+	<div class="Swift">
+	<ul class="code-lines">
+	<li><code class="code-voice"><span class="kt">var</span> <span class="vc">x</span> = <span class="m">0.0</span>, <span class="vc">y</span> = <span class="m">0.0</span>, <span class="vc">z</span> = <span class="m">0.0</span></code></li>
+	</ul>
+	</div>
+	</div>
+	<div>
+	<h3>Type Annotations（声明时指定常量及变量的类型）</h3>
+	<p>
+	You can provide a type annotation when you declare a constant or variable, to be clear about the kind of values the constant or variable can store. Write a type annotation by placing a colon after the constant or variable name, followed by a space, followed by the name of the type to use.</p>
+	<br>
+	<p>This example provides a type annotation for a variable called welcomeMessage, to indicate that the variable can store String values:</p>
+	<ul>
+	<li>var welcomeMessage: String</li>
+	</ul>
+	</div>
+	</section>
+	<section>
+	<div>
+	<p>
+	 You can define multiple related variables of the same type on a single line, separated by commas, with a single type annotation after the final variable name:
+
+		 
+	</p>
+	<ul>
+	<li> var red, green, blue: Double
+	</li>
+	</ul>
+	</div>
+	</section>
+	<section>
+	<div>
+	<h3>Naming Constants and Variables(常量及变量的命名)</h3>
+	<span>Constant and variable names can contain almost any character, including Unicode characters:</span>
+	<ul>
+	<li>let π = 3.14159</li>
+	<li>let 你好 = "你好世界"</li>
+	<li>let 🐶🐮 = "dogcow"</li>
+	</ul>
+	<p>Constant and variable names cannot contain whitespace characters, mathematical symbols, arrows, private-use (or invalid) Unicode code points, or line- and box-drawing characters. Nor can they begin with a number, although numbers may be included elsewhere within the name. </p>
+	<ol>
+	<li>不能包含:</li>
+	<ul>
+	<li>空格</li>
+	<li>数学符号</li>
+	<li>箭头</li>
+	<li>private-use (or invalid) Unicode code points</li>
+	<li>line- and box-drawing characters</li>
+	</ul>
+	<li>不能以数字开头</li>
+	<li>Once you’ve declared a constant or variable of a certain type, you can’t
+	 redeclare it again with the same name, or change it to store values of a
+	 different type. Nor can you change a constant into a variable or a 
+	variable into a constant.(一旦声明为某类型，就只能接受该类型的值，常量就不能变为变量，变量也不能变为常量)
+	</li>
+	<li>If you need to give a constant or variable the same name as a reserved Swift keyword, surround the keyword with backticks (<code class="code-voice">`</code>) when using it as a name. However, avoid using keywords as names unless you have absolutely no choice.（如果要名为swift保留的关键字，就把该关键字用（'）围起来）</li>
+	</ol>
+	</div>
+	</section>
+	<section>
+	<h3>Printing Constants and Variables</h3>
+	<span>You can print the current value of a constant or variable with the print(_:separator:terminator:) function: </span>
+	<ul>
+	<li><code class="code-voice"><span class="kt">var</span> <span class="vc">friendlyWelcome</span> = <span class="s">"Hello!"</span></code></li>
+	<li><code class="code-voice"><span class="vc">friendlyWelcome</span> = <span class="s">"Bonjour!"</span></code></li>
+	<li>print(friendlyWelcome)</li>
+	</ul>
+	<p>
+	The print(_:separator:terminator:) function is a global function that prints one or more values to an appropriate output. In Xcode, for example, the print(_:separator:terminator:) function prints its output in Xcode’s “console” pane. The separator and terminator parameter have default values, so you can omit them when you call this function. By default, the function terminates the line it prints by adding a line break. To print a value without a line break after it, pass an empty string as the terminator—for example, print(someValue, terminator: ""). For information about parameters with default values, see Default Parameter Values. (这个打印函数是个全局函数，第一个参数没有argumentLabel，后俩个参数有默认值，所以调用时可以不写)
+	</p>
+	<p>
+	Swift uses string interpolation to include the name of a constant or variable as a placeholder in a longer string, and to prompt Swift to replace it with the current value of that constant or variable. Wrap the name in parentheses and escape it with a backslash before the opening parenthesis: (Swift用 String Interpolation的方式来把常量或变量占位到一个长字符串中)
+	</p>
+	<ul>
+	<li>print("The current value of friendlyWelcome is \(friendlyWelcome)")</li>
+	</ul>
+	</section>
+	<section>
+	<h3>Comments(注释)</h3>
+	<ul>
+	<li>Single-line comments begin with two forward-slashes (//)(单行注释):<br>// This is a comment.</li>
+	<li> Multiline comments start with a forward-slash followed by an asterisk (/*) and end with an asterisk followed by a forward-slash (*/):(多行注释)<br>
+
+			/* This is also a comment
+			 but is written over multiple lines. */
+
+	</li>
+	<li>Unlike multiline comments in C, multiline comments in Swift can be nested inside other multiline comments. You write nested comments by starting a multiline comment block and then starting a second multiline comment within the first block. The second block is then closed, followed by the first block: (多行嵌套注释)<br>
+
+			/* This is the start of the first multiline comment.
+			 /* This is the second, nested multiline comment. */
+			 This is the end of the first multiline comment. */
+
+	</li>
+	</ul>
+	</section>
+	<section>
+	<h3></h3>
+	</section>
+	<section>
+	<h3>Semicolons(分号)</h3>
+	<p>Unlike many other languages, Swift does not require you to write a semicolon (;) after each statement in your code, although you can do so if you wish. However, semicolons are required if you want to write multiple separate statements on a single line:(swift不要求在每个表达式后写分号，当然要写也是可以的，但是如果要在一行写多个表达式，那么每个表达式必须用分号隔开)</p>
+	</section>
+	<section>
+	<h3>Integers(整型)</h3>
+	<p>ntegers are whole numbers with no fractional component, such as 42 and -23. Integers are either signed (positive, zero, or negative) or unsigned (positive or zero).(Integer是没有分数部分的纯整数，包括有符号整型和无符号整型)</p>
+	<p> Swift provides signed and unsigned integers in 8, 16, 32, and 64 bit forms. These integers follow a naming convention similar to C, in that an 8-bit unsigned integer is of type UInt8, and a 32-bit signed integer is of type Int32. Like all types in Swift, these integer types have capitalized names. (和swift中其他类型一样，这些类型的首字母是大写的)<br></p>
+	<span>Swift提供了以下格式的整型</span>
+	<ul>
+	<li>Int8</li>
+	<li>UInt8</li>
+	<li>Int16</li>
+	<li>UInt16</li>
+	<li>Int32</li>
+	<li>UInt32</li>
+	<li>Int64</li>
+	<li>UInt64<br></li>
+	</ul>
+	</section>
+	<section>
+	<h3>Integer Bounds(Integer值的范围)</h3>
+	<span>You can access the minimum and maximum values of each integer type with its min and max properties:</span>
+	<ul>
+	<li><code class="code-voice"><span class="kt">let</span> <span class="vc">minValue</span> = <span class="vc">UInt8</span>.<span class="vc">min</span>  <span class="c">// minValue is equal to 0, and is of type UInt8</span></code></li>
+	<li><code class="code-voice"><span class="kt">let</span> <span class="vc">maxValue</span> = <span class="vc">UInt8</span>.<span class="vc">max</span>  <span class="c">// maxValue is equal to 255, and is of type UInt8</span></code></li>
+	</ul>
+	</section>
+	<section>
+	<h3>Int</h3>
+	<p>In most cases, you don’t need to pick a specific size of integer to use in your code. Swift provides an additional integer type, Int, which has the same size as the current platform’s native word size:(大多数情况下你不必选择某一形式的整型，Swift另外提供的integer类型Int和当前平台的位数保持一致)</p>
+	<ul>
+	<li>On a 32-bit platform, <code class="code-voice">Int</code> is the same size as <code class="code-voice">Int32</code>.
+	</li>
+	<li>On a 64-bit platform, <code class="code-voice">Int</code> is the same size as <code class="code-voice">Int64</code>.
+	</li>
+	</ul>
+	<h3>UInt</h3>
+	<p>Swift also provides an unsigned integer type, UInt, which has the same size as the current platform’s native word size: </p>
+	<ul>
+	<li>On a 32-bit platform, <code class="code-voice">UInt</code> is the same size as <code class="code-voice">UInt32</code>.
+	</li>
+	<li>On a 64-bit platform, <code class="code-voice">UInt</code> is the same size as <code class="code-voice">UInt64</code>.</li>
+	</ul>
+	</section>
+	<section>
+	<h3>Floating-Point Numbers(浮点数)</h3>
+	<span>Floating-point numbers are numbers with a fractional component, such as 3.14159, 0.1, and -273.15. </span>
+	<p>Floating-point types can represent a much wider range of values than integer types, and can store numbers that are much larger or smaller than can be stored in an Int. Swift provides two signed floating-point number types:(Swift提供了以下两种有符号的浮点类型)</p>
+	<ul>
+	<li><code class="code-voice">Double</code> represents a 64-bit floating-point number.(Double)</li>
+	<li><code class="code-voice">Float</code> represents a 32-bit floating-point number.(Float)</li>
+	</ul>
+	<p>
+	Double has a precision of at least 15 decimal digits, whereas the precision of Float can be as little as 6 decimal digits. The appropriate floating-point type to use depends on the nature and range of values you need to work with in your code. In situations where either type would be appropriate, Double is preferred. (Double至少要有15位的精度，而Float则至少6位)
+	</p>
+	</section>
+	<section>
+	<h3>Type Safety and Type Inference(类型安全和类型引用)</h3>
+	<p>Swift is a type-safe language. A type safe language encourages you to be clear about the types of values your code can work with. If part of your code expects a String, you can’t pass it an Int by mistake.(Swift是一门类型安全的语言，一门类型安全的语言要求明确你所写的代码支持什么样类型的值)</p>
+	<p>Because Swift is type safe, it performs type checks when compiling your code and flags any mismatched types as errors. This enables you to catch and fix errors as early as possible in the development process.(由于swift类型安全，在编译代码是它会执行类型检测，并将所有不匹配的类型标记为错误，这就使得程序员在开发中能及早地发现并纠正错误)</p>
+	<p>Type-checking helps you avoid errors when you’re working with different types of values. However, this doesn’t mean that you have to specify the type of every constant and variable that you declare. If you don’t specify the type of value you need, Swift uses type inference to work out the appropriate type. Type inference enables a compiler to deduce the type of a particular expressiom(应该时n,但是写成n之后新浪居然认为这个单词不合法,只能乱写个m了) automatically when it compiles your code, simply by examining the values you provide.(类型检测能帮助程序员纠正类型错误，并不意味着你在声明变量时就一定要制定其类型，如果你指定其类型，Swift能使用类型推断来得出其合适的类型，类型推断使得编译器在编译时根据值来自动推断出某一表达式的类型)</p>
+	<p>Because of type inference, Swift requires far fewer type declarations than languages such as C or Objective-C. Constants and variables are still explicitly typed, but much of the work of specifying their type is done for you. </p>
+	<p>Type inference is particularly useful when you declare a constant or variable with an initial value. This is often done by assigning a literal value (or literal) to the constant or variable at the point that you declare it. (A literal value is a value that appears directly in your source code, such as 42 and 3.14159 in the examples below.) </p>
+	<p>For example, if you assign a literal value of 42 to a new constant without saying what type it is, Swift infers that you want the constant to be an Int, because you have initialized it with a number that looks like an integer: </p>
+	<ul>
+	<li>
+
+			let meaningOfLife = 42<br>
+			// meaningOfLife is inferred to be of type Int
+
+	</li>
+	</ul>
+	<p>Likewise, if you don’t specify a type for a floating-point literal, Swift infers that you want to create a Double: </p>
+	<ul>
+	<li>
+			let pi = 3.14159<br>
+			// pi is inferred to be of type Double(推断为Double)</li>
+	<li>
+
+			let anotherPi = 3 + 0.14159<br>
+			// anotherPi is also inferred to be of type Double(推断为Double)</li>
+	</ul>
+	<p>Swift always chooses Double (rather than Float) when inferring the type of floating-point numbers.(Swift会把浮点数优先推断为Double而不是Float)</p>
+	</section>
+	<section>
+	<h3>Numeric Literals(字面量数值类型)</h3>
+	<span>Integer literals can be written as:(整型字面量)</span>
+	<ul>
+	<li>A <em>decimal</em> number, with no prefix
+	</li>
+	<li>A <em>binary</em> number, with a <code class="code-voice">0b</code> prefix
+	</li>
+	<li>An <em>octal</em> number, with a <code class="code-voice">0o</code> prefix</li>
+	<li>A <em>hexadecimal</em> number, with a <code class="code-voice">0x</code> prefix
+	</li>
+	</ul>
+	<span>All of these integer literals have a decimal value of 17: </span>
+	<ul>
+	<li>
+	let decimalInteger = 17
+	</li>
+	<li>let binaryInteger = 0b10001<br>// 17 in binary notation(二进制)</li>
+	<li>let octalInteger = 0o21<br>// 17 in octal notation(八进制)</li>
+	<li>let hexadecimalInteger = 0x11<br>// 17 in hexadecimal notation(十六进制)</li>
+	</ul>
+	<p>Floating-point literals can be decimal (with no prefix), or hexadecimal (with a 0x prefix). They must always have a number (or hexadecimal number) on both sides of the decimal point. Decimal floats can also have an optional exponent, indicated by an uppercase or lowercase e; hexadecimal floats must have an exponent, indicated by an uppercase or lowercase p. (浮点型字面量)</p>
+	<ol>
+	<li>For decimal numbers with an exponent of exp, the base number is multiplied by 10exp: <br>
+	<ul>
+	<li>1.25e2 means 1.25 x 102, or 125.0.(十进制e以10为底)</li>
+	<li><code class="code-voice">1.25e-2</code> means 1.25 x 10<sup>-2</sup>, or <code class="code-voice">0.0125</code>.
+	</li>
+	</ul>
+	</li>
+	<li>For hexadecimal numbers with an exponent of exp, the base number is multiplied by 2exp: <br>
+	<ul>
+	<li><code class="code-voice">0xFp2</code> means 15 x 2<sup>2</sup>, or <code class="code-voice">60.0</code>.(十六进制p以2为底)</li>
+	<li><code class="code-voice">0xFp-2</code> means 15 x 2<sup>-2</sup>, or <code class="code-voice">3.75</code>.
+	</li>
+	</ul>
+	</li>
+	<li>All of these floating-point literals have a decimal value of 12.1875:<br>
+	<ul>
+	<li><code class="code-voice"><span class="kt">let</span> <span class="vc">decimalDouble</span> = <span class="m">12.1875</span></code></li>
+	<li><code class="code-voice"><span class="kt">let</span> <span class="vc">exponentDouble</span> = <span class="m">1.21875e1</span></code></li>
+	<li><code class="code-voice"><span class="kt">let</span> <span class="vc">hexadecimalDouble</span> = <span class="m">0xC.3p0</span></code></li>
+	</ul>
+	</li>
+	</ol>
+	<p>Numeric literals can contain extra formatting to make them easier to read. Both integers and floats can be padded with extra zeros and can contain underscores to help with readability. Neither type of formatting affects the underlying value of the literal: (数值字面量可包含额外的形式以增强可读性而不改变含义，整型和浮点型都可以补加额外的0，并可以包含下划线)</p>
+	<ul>
+	<li>let paddedDouble = 000123.456</li>
+	<li>let oneMillion = 1_000_000</li>
+	<li>let justOverOneMillion = 1_000_000.000_000_1</li>
+	</ul>
+	</section>
+	<section>
+	<h3>Numeric Type Conversion(数值类型的转换)</h3>
+	<p>Use the Int type for all general-purpose integer constants and variables in your code, even if they are known to be non-negative. Using the default integer type in everyday situations means that integer constants and variables are immediately interoperable in your code and will match the inferred type for integer literal values.(在日常开发中一般都用Int，他们可以直接互操作，并会匹配推断到的字面量整型的类型)</p>
+	<p> Use other integer types only when they are specifically needed for the task at hand, because of explicitly-sized data from an external source, or for performance, memory usage, or other necessary optimization. Using explicitly-sized types in these situations helps to catch any accidental value overflows and implicitly documents the nature of the data being used.（只有特别需要时才用其他类型的整型,比如来自外部的特定大小的数据，为了性能的优化，内存的使用,或者其他的优化方案，在这些情况下用特定大小的整型类型能捕获意外的值溢出，并隐式地记录正在使用的数据的本质属性）</p>
+	<h3>Integer Conversion(整型转换)</h3>
+	<p>The range of numbers that can be stored in an integer constant or variable is different for each numeric type. An Int8 constant or variable can store numbers between -128 and 127, whereas a UInt8 constant or variable can store numbers between 0 and 255. A number that will not fit into a constant or variable of a sized integer type is reported as an error when your code is compiled:</p>
+	<ul>
+	<li>
+	let cannotBeNegative: UInt8 = -1<br>
+	// UInt8 cannot store negative numbers, and so this will report an error
+	</li>
+	<li>let tooBig: Int8 = Int8.max + 1<br>
+	// Int8 cannot store a number larger than its maximum value,<br>
+	// and so this will also report an error</li>
+	<p>Because each numeric type can store a different range of values, you must opt in to numeric type conversion on a case-by-case basis. This opt-in approach prevents hidden conversion errors and helps make type conversion intentions explicit in your code. (由于不同类型的整型能存储的值的大小范围不同，你必须就具体情况去进行数值类型的转换,这样才能避免隐式转换引起的错误，并使得代码中类型转换的意图或目的更加明确)</p>
+	<p>To convert one specific number type to another, you initialize a new number of the desired type with the existing value. In the example below, the constant twoThousand is of type UInt16, whereas the constant one is of type UInt8. They cannot be added together directly, because they are not of the same type. Instead, this example calls UInt16(one) to create a new UInt16 initialized with the value of one, and uses this value in place of the original: (为了把某种类型的整型转换为其他类型，你可以定义一个你想要转换为的特定类型的整型类型来接受那个值)</p>
+	<ul>
+	<li>let twoThousand: UInt16 = 2_000</li>
+	<li>let one: UInt8 = 1</li>
+	<li>let twoThousandAndOne = twoThousand + UInt16(one)</li>
+	</ul>
+	<p>Because both sides of the addition are now of type UInt16, the addition is allowed. The output constant (twoThousandAndOne) is inferred to be of type UInt16, because it is the sum of two UInt16 values. </p>
+	<br>
+	<p> SomeType(ofInitialValue) is the default way to call the initializer of a Swift type and pass in an initial value. Behind the scenes, UInt16 has an initializer that accepts a UInt8 value, and so this initializer is used to make a new UInt16 from an existing UInt8. You can’t pass in any type here, however—it has to be a type for which UInt16 provides an initializer. Extending existing types to provide initializers that accept new types (including your own type definitions) is covered in Extensions.(SomeType(ofInitialValue)是Swift传一个初始值调用某个Swift type类型的初始化方法的默认方式，因此UInt16有一个接受UInt8类型值的初始化方法，当然这里你不能传入任何类型的值，得UInt16有对应的初始化方法才行)
+	</p>
+	<h3>Integer and Floating-Point Conversion(整型与浮点型的转换)</h3>
+	<p>Conversions between integer and floating-point numeric types must be made explicit:(必须显式转换) </p>
+	<ul>
+	<li>
+	let three = 3
+	</li>
+	<li>let pointOneFourOneFiveNine = 0.14159</li>
+	<li>let pi = Double(three) + pointOneFourOneFiveNine<br>
+	// pi equals 3.14159, and is inferred to be of type Double</li>
+	<li>
+
+			let integerPi = Int(pi)<br>
+		 //此时浮点类型通常会被截断<br>
+			// integerPi equals 3, and is inferred to be of type Int
+
+	</li>
+	</ul>
+	<p>
+
+	Note
+
+	The rules for combining numeric constants and variables are different from the rules for numeric literals. The literal value 3 can be added directly to the literal value 0.14159, because number literals do not have an explicit type in and of themselves. Their type is inferred only at the point that they are evaluated by the compiler.(把数值变量或常量组合与把数值字面量组合的规则是不同，因为数值字面量就其本身而言并没有明确的类型，只有编译器在编译它时其类型才会被推断出)
+	</p>
+	</ul>
+	</section>
+	<section>
+	<h3>Type Aliases(类型别名)</h3>
+	<span>Type aliases define an alternative name for an existing type. You define type aliases with the typealias keyword.</span>
+	<p>Type aliases are useful when you want to refer to an existing type by a name that is contextually more appropriate, such as when working with data of a specific size from an external source: </p>
+	<ul>
+	<li>typealias AudioSample = UInt16</li>
+	<li>
+
+			var maxAmplitudeFound = AudioSample.min<br>
+			// maxAmplitudeFound is now 0
+
+	</li>
+	</ul>
+	</section>
+	<section>
+	<h3>Booleans(布尔类型)</h3>
+	<p>Swift has a basic Boolean type, called Bool. Boolean values are referred to as logical, because they can only ever be true or false. Swift provides two Boolean constant values, true and false: (布尔值被认为是逻辑的，因为的它的永远只有true或false)</p>
+	<ul>
+	<li>let orangesAreOrange = true</li>
+	<li>let turnipsAreDelicious = false</li>
+	</ul>
+	<p>Swift’s type safety prevents non-Boolean values from being substituted for Bool. The following example reports a compile-time error:(Swift的类型安全可以阻止非布尔值替代布尔值)</p>
+	<ul>
+	<li>
+
+			let i = 1<br>
+			if i {<br>
+					// this example will not compile, and will report an error(报错)<br>
+			}
+
+	</li>
+	<li>
+
+
+			let i = 1<br>
+			if i == 1 {<br>
+					// this example will compile successfully(编译成功)<br>
+			}
+
+
+	</li>
+	</ul>
+	<p>The result of the i == 1 comparison is of type Bool, and so this second example passes the type-check. Comparisons like i == 1 are discussed in Basic Operators. </p>
+	<br>
+	<p> As with other examples of type safety in Swift, this approach avoids accidental errors and ensures that the intention of a particular section of code is always clear. (这种机制或方法避免了意外的错误，并使得某节代码的意图更加明确)<br></p>
+	</section>
+	<section>
+	<h3>Tuples(元组)</h3>
+	<p>Tuples group multiple values into a single compound value. The values within a tuple can be of any type and do not have to be of the same type as each other. (元组把多个值组合成一个混合值，元组的元素可以是任何类型，并不需要所有元素类型一致)</p>
+	<ul>
+	<li>let http404Error = (404, "Not Found")
+	<br>
+	// http404Error is of type (Int, String), and equals (404, "Not Found")
+	</li>
+	<li>et (statusCode, statusMessage) = http404Error<br>
+	//拆分(decompose)元组为不同的变量或常量<br>
+	print("The status code is \(statusCode)")<br>
+	// Prints "The status code is 404"<br>
+	print("The status message is \(statusMessage)")<br>
+	// Prints "The status message is Not Found"<br>
+
+
+			let (justTheStatusCode, _) = http404Error<br>
+			print("The status code is \(justTheStatusCode)")<br>
+			// Prints "The status code is 404"
+
+
+	</li>
+	</ul>
+	<h3>访问元组的每个元素</h3>
+	<p>print("The status code is \(http404Error.0)")<br>
+	// Prints "The status code is 404"<br>
+	print("The status message is \(http404Error.1)")<br>
+	// Prints "The status message is Not Found"</p>
+	<h3>定义元组时给每个元素命名</h3>
+	<ul>
+	<li>let http200Status = (statusCode: 200, description: "OK")</li>
+	</ul>
+	<h4>命名后可以这样访问</h4>
+	<ul>
+	<li>
+			print("The status code is \(http200Status.statusCode)")<br>
+			// Prints "The status code is 200"<br>
+			print("The status message is \(http200Status.description)")<br>
+			// Prints "The status message is OK"
+
+	</li>
+	</ul>
+	<p>Tuples are particularly useful as the return values of functions. A function that tries to retrieve a web page might return the (Int, String) tuple type to describe the success or failure of the page retrieval. By returning a tuple with two distinct values, each of a different type, the function provides more useful information about its outcome than if it could only return a single value of a single type. For more information, see Functions with Multiple Return Values. (元组作为函数的返回值时非常有用的)</p>
+	</section>
+	<section>
+	<h3>Optionals(可选类型)</h3>
+	<p>You use optionals in situations where a value may be absent. An optional represents two possibilities: Either there is a value, and you can unwrap the optional to access that value, or there isn’t a value at all. (当一个值可能不存在时用可选类型)</p>
+	<span>一个可选类型代表两层含义：</span>
+
+
+
+	<ul>
+	<li> There is a value, and you can unwrap the optional to access that value.<br>
+	//有值，那么你需要解包来访问其值
+	</li>
+	<li>There isn’t a value at all.<br>
+	//压根儿就没值
+	</li>
+	</ul>
+	<p>
+
+	Note
+
+	The concept of optionals doesn’t exist in C or Objective-C. The nearest thing in Objective-C is the ability to return nil from a method that would otherwise return an object, with nil meaning “the absence of a valid object.” However, this only works for objects—it doesn’t work for structures, basic C types, or enumeration values. For these types, Objective-C methods typically return a special value (such as NSNotFound) to indicate the absence of a value. This approach assumes that the method’s caller knows there is a special value to test against and remembers to check for it. Swift’s optionals let you indicate the absence of a value for any type at all, without the need for special constants.(可选类型的概念在C和OC中并不存在，最接近的概念大概是只针对对象类型的OC中的nil)
+	</p>
+	<p>
+	Here’s an example of how optionals can be used to cope with the absence of a value. Swift’s Int type has an initializer which tries to convert a String value into an Int value. However, not every string can be converted into an integer. The string "123" can be converted into the numeric value 123, but the string "hello, world" does not have an obvious numeric value to convert to. (Swift的Int有一个试图将String类型的值转换成Int类型的初始化方法，但是显然不是所有的String类型的值都能转换成功,因此该方法将返回一个可选的Int类型)
+	</p>
+	<ul>
+	<li>let possibleNumber = "123"</li>
+	<li>let convertedNumber = Int(possibleNumber)<br>
+	// convertedNumber is inferred to be of type "Int?", or "optional Int"</li>
+	</ul>
+	</section>
+	<section>
+	<h3>nil</h3>
+	<p>You set an optional variable to a valueless state by assigning it the special value nil: (把可选类型设置为无知状态，只需给其赋值nil)</p>
+	<ul>
+	<li>
+
+			var serverResponseCode: Int? = 404<br>
+			// serverResponseCode contains an actual Int value of 404<br>
+			serverResponseCode = nil<br>
+			// serverResponseCode now contains no value<br>
+
+	</li>
+	</ul>
+	<p>nil cannot be used with nonoptional constants and variables. If a constant or variable in your code needs to work with the absence of a value under certain conditions, always declare it as an optional value of the appropriate type.(nil只能用于可选类型，表示不包含任何值)</p>
+	<br>
+	<p>If you define an optional variable without providing a default value, the variable is automatically set to nil for you:(可选类型变量的默认值就是nil)</p>
+	<ul>
+	<li>
+
+			var surveyAnswer: String?<br>
+			// surveyAnswer is automatically set to nil
+
+	</li>
+	</ul>
+	<p>Swift’s nil is not the same as nil in Objective-C. In Objective-C, nil is a pointer to a nonexistent object. In Swift, nil is not a pointer—it is the absence of a value of a certain type. Optionals of any type can be set to nil, not just object types.
+	(Swift中的nil和OC中的不一样，它并不是指针，它只表示某种类型的值不存在)</p>
+	<br>
+	<p>You can use an if statement to find out whether an optional contains a value by comparing the optional against nil. You perform this comparison with the “equal to” operator (==) or the “not equal to” operator (!=). (用比较运算符来判断一个可选类型是否包含值)</p>
+	<br>
+	<p>Once you’re sure that the optional does contain a value, you can access its underlying value by adding an exclamation mark (!) to the end of the optional’s name. The exclamation mark effectively says, “I know that this optional definitely has a value; please use it.” This is known as forced unwrapping of the optional’s value: (一旦确定可选类型包含值就可以用如下语法强制解包以访问其值)</p>
+	<br>
+			if convertedNumber != nil {<br>
+					print("convertedNumber has an integer value of \(convertedNumber!).")<br>
+			}<br>
+			// Prints "convertedNumber has an integer value of 123."<br>
+	<p>Trying to use ! to access a nonexistent optional value triggers a runtime error. Always make sure that an optional contains a non-nil value before using ! to force-unwrap its value.
+	(强制解包一个不包含值的可选类型，会引发一个运行时错误)</p>
+	</section>
+	<section>
+	<h3>Optional Binding(可选绑定)</h3>
+	<p>You use optional binding to find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable. Optional binding can be used with if and while statements to check for a value inside an optional, and to extract that value into a constant or variable, as part of a single action. if and while statements are described in more detail in Control Flow. (用可选绑定来判断一个可选类型是否包含值，如果包含就用其值初始化一个变量或常量，可以和If,While一起使用,绑定成功的变量或常量只在{}内可用)</p>
+	<br>
+			if let constantName = someOptional {<br>
+
+					statements<br>
+
+			}<br>
+	<p>You can include as many optional bindings and Boolean conditions in a single if statement as you need to, separated by commas. If any of the values in the optional bindings are nil or any Boolean condition evaluates to false, the whole if statement’s condition is considered to be false. The following if statements are equivalent: (一个if语句可包含多个可选绑定，用逗号隔开，)</p>
+	if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber &lt; secondNumber &amp;&amp; secondNumber &lt; 100 <br>{<br>
+			print("\(firstNumber) &lt; \(secondNumber) &lt; 100")<br>
+	}<br>
+	// Prints "4 &lt; 42 &lt; 100"<br>
+	 
+	if let firstNumber = Int("4") {<br>
+			if let secondNumber = Int("42") {<br>
+					if firstNumber &lt; secondNumber &amp;&amp; secondNumber &lt; 100 {<br>
+							print("\(firstNumber) &lt; \(secondNumber) &lt; 100")<br>
+					}<br>
+			}<br>
+	}
+	</section>
+	<section>
+	<h3>隐式解包的可选类型</h3>
+	<p>As described above, optionals indicate that a constant or variable is allowed to have “no value”. Optionals can be checked with an if statement to see if a value exists, and can be conditionally unwrapped with optional binding to access the optional’s value if it does exist. </p>
+	<br>
+	<p>Sometimes it is clear from a program’s structure that an optional will always have a value, after that value is first set. In these cases, it is useful to remove the need to check and unwrap the optional’s value every time it is accessed, because it can be safely assumed to have a value all of the time.(某一可选类型一旦赋值就一定有值的情况下，就没必要每次访问的时候都去检查解包)</p>
+	<br>
+	<p>These kinds of optionals are defined as implicitly unwrapped optionals. You write an implicitly unwrapped optional by placing an exclamation mark (String!) rather than a question mark (String?) after the type that you want to make optional. </p>
+	<br>
+	<p>Implicitly unwrapped optionals are useful when an optional’s value is confirmed to exist immediately after the optional is first defined and can definitely be assumed to exist at every point thereafter. The primary use of implicitly unwrapped optionals in Swift is during class initialization, as described in Unowned References and Implicitly Unwrapped Optional Properties.(隐式解包可选类型对于那些一旦定义之后其值一定存在的可选类型非常有用)</p>
+	<br>
+	<p>An implicitly unwrapped optional is a normal optional behind the scenes, but can also be used like a nonoptional value, without the need to unwrap the optional value each time it is accessed. The following example shows the difference in behavior between an optional string and an implicitly unwrapped optional string when accessing their wrapped value as an explicit String:(隐式解包可选类型与可选类型的区别)</p>
+	<ul>
+	<li>let possibleString: String? = "An optional string."</li>
+	<li>let forcedString: String = possibleString! <br>// requires an exclamation mark</li>
+	<li>let assumedString: String! = "An implicitly unwrapped optional string."</li>
+	<li>let implicitString: String = assumedString <br>// no need for an exclamation mark</li>
+	</ul>
+	<p>当然隐式解包可选类型也可以和正常(Normal)可选类型一样使用</p>
+	<p>
+			if assumedString != nil {<br>
+					print(assumedString)<br>
+			}<br>
+			// Prints "An implicitly unwrapped optional string."<br>
+
+			if let definiteString = assumedString {<br>
+					print(definiteString)<br>
+			}<br>
+			// Prints "An implicitly unwrapped optional string."<br>
+
+	</p>
+	</section>
+	<section>
+	<h3>Error Handling(错误处理)</h3>
+	<p>In contrast to optionals, which can use the presence or absence of a value to communicate success or failure of a function, error handling allows you to determine the underlying cause of failure, and, if necessary, propagate the error to another part of your program. (相比可选类型可以用值是否存在来表示函数执行的成功与否，错误处理可以让你确定错误产生的原因，并在适当的情况下将错误传递到代码的其他部分)</p>
+	<p>
+			func canThrowAnError() throws {<br>
+					// this function may or may not throw an error<br>
+			}<br>
+
+			do {<br>
+					try canThrowAnError()<br>
+					// no error was thrown<br>
+			} catch {<br>
+					// an error was thrown<br>
+			}<br>
+
+			func makeASandwich() throws {<br>
+					// ...<br>
+			}<br>
+			 
+			do {<br>
+					try makeASandwich()<br>
+					eatASandwich()<br>
+			} catch SandwichError.outOfCleanDishes {<br>
+					washDishes()<br>
+			} catch SandwichError.missingIngredients(let ingredients) {<br>
+					buyGroceries(ingredients)<br>
+			}
+	</p>
+	</section>
+	<section>
+	<h3>Assertions(诊断)</h3>
+	<p>
+	 In some cases, it is simply not possible for your code to continue execution if a particular condition is not satisfied. In these situations, you can trigger an assertion in your code to end code execution and to provide an opportunity to debug the cause of the absent or invalid value.(有写情况下如果不满足某个条件你的程序就不可能执行下去了，你可以通过引发一个诊断来终止程序的执行并给机会调试)
+	</p>
+	<p>An assertion is a runtime check that a Boolean condition definitely evaluates to true. Literally put, an assertion “asserts” that a condition is true. You use an assertion to make sure that an essential condition is satisfied before executing any further code. If the condition evaluates to true, code execution continues as usual; if the condition evaluates to false, code execution ends, and your app is terminated. (诊断是一个运行时检查)</p>
+	<p>
+
+			let age = -3<br>
+			assert(age >= 0, "A person's age cannot be less than zero")<br>
+			// this causes the assertion to trigger, because age is not >= 0<br>
+
+	</p>
+	<h3>When to Use Assertions(什么时候用诊断)</h3>
+	<p>
+	Use an assertion whenever a condition has the potential to be false, but must definitely be true in order for your code to continue execution. Suitable scenarios for an assertion check include: (当某个条件又可能不满足，但是必须满足该条件查询才能继续执行)
+	</p>
+	<ul>
+	<li>An integer subscript index is passed to a custom subscript implementation, but the subscript index value could be too low or too high.(索引越界)</li>
+	<li>A value is passed to a function, but an invalid value means that the function cannot fulfill its task.(函数犹豫参数无效而没有完成起任务) </li>
+	<li>An optional value is currently nil, but a non-nil value is essential for subsequent code to execute successfully. (一个可选类型的值必须有值时才能继续执行)</li>
+	</ul>
+	</section>
+	
+	<span>译自：</span><a link="https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309</a>
+	</body>
+</html>

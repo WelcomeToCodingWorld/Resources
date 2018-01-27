@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>Terminology(专业术语)</h2>
+		<p>
+			<span>Operators are unary, binary, or ternary: </span>
+			<ul>
+				<li>Unary operators operate on a single target (such as -a). Unary prefix operators appear immediately before their target (such as !b), and unary postfix operators appear immediately after their target (such as c!). <br>
+					//一元操作符
+				</li>
+				<li>Binary operators operate on two targets (such as 2 + 3) and are infix because they appear in between their two targets. <br>
+					//二元操作符
+				</li>
+				<li>Ternary operators operate on three targets. Like C, Swift has only one ternary operator, the ternary conditional operator (a ? b : c).<br>
+					//像C一样，Swift也只有一个三元操作符
+				</li>
+			</ul>
+		</p>
+		<p>
+			<h3>Assignment Operator(赋值操作符)</h3>
+			<span>The assignment operator (a = b) initializes or updates the value of a with the value of b: </span>
+			<ul>
+				<li>let b = 10,var a = 5,a = b</li>
+				<li>let (x, y) = (1, 2)</li>
+			</ul>
+		</p>
+		<p>
+			<h3>
+				Arithmetic Operators(算术运算符)
+			</h3>
+			<ul>
+				<li>Addition (+)</li>
+				<li>Subtraction (-) </li>
+				<li>Multiplication (*)</li>
+				<li>Division (/)</li>
+			</ul>
+		</p>
+		<p>Unlike the arithmetic operators in C and Objective-C, the Swift arithmetic operators do not allow values to overflow by default. You can opt in to value overflow behavior by using Swift’s overflow operators.(不像C和Objective-C，Swift默认情况下不允许值溢出)</p>
+		<br>
+		<p>The addition operator is also supported for String concatenation:(+操作符对于String也是支持的)</p>
+		<ul>
+			<li>"hello, " + "world"  // equals "hello, world"</li>
+		</ul>
+		<h3>Remainder Operator(取余操作符)</h3>
+		<p>The remainder operator (a % b) works out how many multiples of b will fit inside a and returns the value that is left over (known as the remainder).（就是除去能满足的整数倍之后的余数） </p>
+		<ul>
+			<li> a = (b x some multiplier) + remainder </li>
+			<li> -9 = (4 x -2) + -1 </li>
+			<li>The sign of b is ignored for negative values of b. This means that a % b and a % -b always give the same answer.
+(b的符号是被忽略的)</li>
+		</ul>
+		<h3>Unary Minus Operator(一元“-”运算符，即取反)</h3>
+		<h3>Unary Plus Operator(一元“+”运算符，不做任何改变)</h3>
+		<h3>Compound Assignment Operators(混合赋值运算符（+=）)</h3>
+		<h3>Comparison Operators(比较运算符)</h3>
+		<ul>
+			<li>Equal to (a == b) </li>
+			<li>Not equal to (a != b)</li>
+			<li>Greater than (a > b) </li>
+			<li>Less than (a < b) </li>
+			<li>Greater than or equal to (a >= b) </li>
+			<li>Less than or equal to (a <= b) </li>
+		</ul>
+		<p>
+		Swift also provides two identity operators (=== and !==), which you use to test whether two object references both refer to the same object instance. For more information, see Classes and Structures. (比较两个对象引用是否引用着同一对像实例)
+		<ul>
+			<li>===</li>
+			<li>!==</li>
+		</ul>
+		</p>
+		<p>You can also compare tuples that have the same number of values, as long as each of the values in the tuple can be compared. For example, both Int and String can be compared, which means tuples of the type (Int, String) can be compared. In contrast, Bool can’t be compared, which means tuples that contain a Boolean value can’t be compared. （也可以用于比较有着相同数量元素的元组）</p>
+		<p>
+			Tuples are compared from left to right, one value at a time, until the comparison finds two values that aren’t equal. Those two values are compared, and the result of that comparison determines the overall result of the tuple comparison. If all the elements are equal, then the tuples themselves are equal. For example: (从左至右比较,一次比较一个值，知道发现来给那个不相等的值才停止比较)
+			<ul>
+				<li>(1, "zebra") < (2, "apple")   // true because 1 is less than 2; "zebra" and "apple" are not compared</li>
+				<li>(3, "apple") < (3, "bird")    // true because 3 is equal to 3, and "apple" is less than "bird"</li>
+				<li>(4, "dog") == (4, "dog")      // true because 4 is equal to 4, and "dog" is equal to "dog"</li>
+			</ul>
+		</p>
+		<h3>Ternary Conditional Operator(三元条件运算符)</h3>
+		<p>The ternary conditional operator is a special operator with three parts, which takes the form question ? answer1 : answer2. It is a shortcut for evaluating one of two expressions based on whether question is true or false. If question is true, it evaluates answer1 and returns its value; otherwise, it evaluates answer2 and returns its value. (格式为question ? answer1 : answer2)</p>
+		<h3>Nil-Coalescing Operator(Nil联合运算符a ?? b)</h3>
+		<p>The nil-coalescing operator (a ?? b) unwraps an optional a if it contains a value, or returns a default value b if a is nil. The expression a is always of an optional type. The expression b must match the type that is stored inside a. (是
+（a != nil ? a! : b）
+的简便写法)</p>
+		<h3>范围操作符</h3>
+		<h4>Closed Range Operator(闭合范围操作符)</h4>
+		<p>The closed range operator (a...b) defines a range that runs from a to b, and includes the values a and b. The value of a must not be greater than b. </p>
+		<h3>Half-Open Range Operator(半开范围操作符,左闭右开)</h3>
+		<p>The half-open range operator defines a range that runs from a to b, but does not include b. It is said to be half-open because it contains its first value, but not its final value. As with the closed range operator, the value of a must not be greater than b. If the value of a is equal to b, then the resulting range will be empty.</p>
+		<h3>
+			Logical Operators(逻辑操作符)
+		</h3>
+		<ul>
+			<li>Logical NOT (!a) </li>
+			<li>Logical AND (a && b) </li>
+			<li>Logical OR (a || b) </li>
+		</ul>
+		<p>
+			
+
+if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {<br>
+				print("Welcome!")<br>
+			} else {<br>
+				print("ACCESS DENIED")<br>
+			}<br>
+			// Prints "Welcome!"<br>
+
+			f (enteredDoorCode && passedRetinaScan) || hasDoorKey || <br>knowsOverridePassword {<br>
+				print("Welcome!")<br>
+			} else {<br>
+				print("ACCESS DENIED")<br>
+			}<br>
+			// Prints "Welcome!"<br>
+		</p>
+	</body>
+</html>
